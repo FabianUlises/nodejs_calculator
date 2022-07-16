@@ -19,8 +19,10 @@ app.get('/bmi', (req, res) => {
     res.sendFile(__dirname + '/public/calc.html');
 })
 app.post('/bmi', (req, res) => {
-    console.log(req.body)
-    res.send(req.body);
+    const height = Number(req.body.height);
+    const weight = Number(req.body.weight);
+    const bmi = weight/(height * height)
+    res.send('your bmi is ' + bmi);
 })
 
 app.listen(process.env.PORT, () => {
