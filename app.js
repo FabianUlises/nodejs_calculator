@@ -6,7 +6,7 @@ const app = express();
 // app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/calc.html');
+    res.sendFile(__dirname + '/public/index.html');
 });
 app.post('/', (req, res) => {
     console.log(req.body)
@@ -15,6 +15,13 @@ app.post('/', (req, res) => {
     const result = number1 + number2;
     res.send('the result is ' + result)
 });
+app.get('/bmi', (req, res) => {
+    res.sendFile(__dirname + '/public/calc.html');
+})
+app.post('/bmi', (req, res) => {
+    console.log(req.body)
+    res.send(req.body);
+})
 
 app.listen(process.env.PORT, () => {
     console.log('I am awake!')
